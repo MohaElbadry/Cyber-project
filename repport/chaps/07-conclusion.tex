@@ -1,0 +1,143 @@
+% ============================================
+% Chapitre 7 : Conclusion
+% ============================================
+\chapter{Conclusion}
+\label{chap:conclusion}
+
+\section{Synthèse du Projet}
+
+Ce projet a permis de mettre en œuvre avec succès une \textbf{infrastructure cloud de supervision centralisée} sur AWS. L'ensemble des objectifs fixés ont été atteints :
+
+\begin{table}[H]
+\centering
+\caption{Objectifs atteints}
+\label{tab:objectives-achieved}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Objectif} & \textbf{Statut} \\
+\hline
+Création du VPC et de l'infrastructure réseau & $\checkmark$ \\
+\hline
+Déploiement de 3 instances EC2 & $\checkmark$ \\
+\hline
+Installation de Docker sur le serveur & $\checkmark$ \\
+\hline
+Déploiement de Zabbix conteneurisé & $\checkmark$ \\
+\hline
+Configuration de l'agent Linux & $\checkmark$ \\
+\hline
+Configuration de l'agent Windows & $\checkmark$ \\
+\hline
+Monitoring opérationnel (ZBX vert) & $\checkmark$ \\
+\hline
+Test d'alertes fonctionnel & $\checkmark$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Compétences Acquises}
+
+\subsection{Amazon Web Services}
+
+\begin{itemize}
+    \item Configuration de VPC, subnets et Internet Gateway
+    \item Gestion des Security Groups et règles de pare-feu
+    \item Déploiement et gestion d'instances EC2
+    \item Utilisation des différents types d'AMI (Ubuntu, Windows Server)
+    \item Connexion SSH et RDP aux instances
+\end{itemize}
+
+\subsection{Docker et Conteneurisation}
+
+\begin{itemize}
+    \item Installation et configuration de Docker Engine
+    \item Rédaction de fichiers docker-compose.yml
+    \item Gestion des conteneurs, volumes et réseaux Docker
+    \item Déploiement d'applications multi-conteneurs
+\end{itemize}
+
+\subsection{Zabbix et Monitoring}
+
+\begin{itemize}
+    \item Architecture serveur/agent de Zabbix
+    \item Configuration des agents Linux et Windows
+    \item Utilisation des templates de monitoring
+    \item Configuration des triggers et alertes
+    \item Interprétation des métriques et graphiques
+\end{itemize}
+
+\section{Difficultés Rencontrées}
+
+\subsection{Problèmes et Solutions}
+
+\begin{table}[H]
+\centering
+\caption{Difficultés et solutions apportées}
+\label{tab:difficulties}
+\begin{tabular}{|p{5.5cm}|p{8cm}|}
+\hline
+\textbf{Difficulté} & \textbf{Solution} \\
+\hline
+Temps de démarrage des conteneurs MySQL & Utilisation de healthcheck et depends\_on dans docker-compose \\
+\hline
+Communication agent/serveur bloquée & Vérification des Security Groups et ouverture du port 10050 \\
+\hline
+Pare-feu Windows bloquant l'agent & Création d'une règle entrante pour le port 10050 \\
+\hline
+Session Learner Lab expirée & Redémarrage des conteneurs avec docker compose up -d \\
+\hline
+Récupération du mot de passe Windows & Utilisation de la fonction "Get Windows Password" avec la clé PEM \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Limitations du Learner Lab}
+
+Durant ce projet, plusieurs limitations du Learner Lab AWS Academy ont été identifiées :
+
+\begin{itemize}
+    \item \textbf{Types d'instances} : Limités à t3.medium et t3.large
+    \item \textbf{Région} : Obligatoirement us-east-1 (N. Virginia)
+    \item \textbf{Budget} : Limité à environ 50\$ de crédits
+    \item \textbf{Sessions} : Arrêt automatique après un certain temps d'inactivité
+    \item \textbf{Services} : Certains services AWS avancés non disponibles
+\end{itemize}
+
+\section{Améliorations Possibles}
+
+Pour aller plus loin, plusieurs améliorations pourraient être apportées :
+
+\begin{enumerate}
+    \item \textbf{Haute disponibilité} : Déployer Zabbix en cluster avec réplication
+    \item \textbf{HTTPS} : Configurer un certificat SSL pour l'interface web
+    \item \textbf{Notifications} : Configurer les alertes par email ou Slack
+    \item \textbf{Automatisation} : Utiliser Terraform pour l'infrastructure as code
+    \item \textbf{Monitoring avancé} : Ajouter la supervision d'applications (MySQL, Nginx)
+    \item \textbf{Dashboards personnalisés} : Créer des tableaux de bord adaptés aux besoins
+\end{enumerate}
+
+\section{Perspectives}
+
+Ce projet constitue une base solide pour :
+
+\begin{itemize}
+    \item La mise en place de solutions de monitoring en entreprise
+    \item L'apprentissage approfondi des services AWS
+    \item La maîtrise de Docker et de l'orchestration de conteneurs
+    \item La préparation aux certifications AWS et DevOps
+\end{itemize}
+
+\section{Conclusion Générale}
+
+La réalisation de ce projet a permis d'acquérir une expérience pratique significative dans le domaine du cloud computing et du monitoring d'infrastructure. L'utilisation combinée d'AWS, Docker et Zabbix offre une solution robuste et évolutive pour la supervision d'environnements hybrides.
+
+\vspace{1cm}
+
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
+\centering
+\textbf{Ressources du Projet}\\[0.3cm]
+Dépôt GitHub : \url{https://github.com/VOTRE-USERNAME/aws-zabbix-monitoring}\\[0.2cm]
+Documentation complète disponible dans le README
+}}
+\end{center}

@@ -1,65 +1,73 @@
-\definecolor{orangecustom}{RGB}{230,115,0}
-\definecolor{bluecustom}{RGB}{0,51,102}
+% ============================================
+% Page de Garde - Projet AWS Zabbix
+% ============================================
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=1\textwidth]{images/logo-enset.png}
-\end{figure}
+\begin{titlepage}
+\centering
 
-\vspace{1.5cm}
+% Logo ENSET
+\includegraphics[width=0.85\textwidth]{images/logo-enset.png}
 
-\begin{center}
-    {\Large\bfseries\textbf{DÉPARTEMENT MATHÉMATIQUES ET INFORMATIQUE}}
+\vspace{1.2cm}
 
-    \vspace{1cm}
+{\Large\bfseries DÉPARTEMENT MATHÉMATIQUES ET INFORMATIQUE}
 
-    {\large\bfseries Filière :}\\
-    \vspace{0.5cm}
-    {\color{bluecustom}\large\bfseries «Big Data et Cloud Computing»} \\
-{\color{bluecustom}\large\bfseries «Génie du Logiciel et des Systèmes Informatiques Distribués»}
+\vspace{0.8cm}
 
+{\large\bfseries Filière :}\\[0.3cm]
+{\color{bluecustom}\large\bfseries «Big Data et Cloud Computing»}
 
-    \vspace{0.8cm}
+\vspace{1cm}
 
-    {\color{black}\Huge\bfseries\textbf{Projet Deep Learning}}
-    \vspace{1cm}
+{\color{black}\LARGE\bfseries Projet AWS Academy}
 
-    \begin{tikzpicture}
-        \node[draw=orangecustom, rectangle, line width=2pt, inner sep=20pt, text width=0.75\textwidth, align=center] (box) {
-            \color{black}\Large{AI Forensic Avatar\\[0.3cm] Assistant Intelligent pour l'Analyse Forensique}
-        };
-        \draw[orangecustom, thick] (box.south west) -- (box.south east);
-        \draw[orangecustom, thick] (box.north west) -- (box.north east);
-    \end{tikzpicture}
+\vspace{0.8cm}
 
-    \vspace{1.5cm}
+% Titre du projet dans un cadre
+\begin{tikzpicture}
+    \node[draw=orangecustom, rectangle, line width=2pt, inner sep=15pt, text width=0.85\textwidth, align=center] (box) {
+        \color{black}\Large\textbf{Mise en œuvre d'une Infrastructure Cloud}\\[0.3cm]
+        \color{black}\Large\textbf{de Supervision Centralisée sous AWS}\\[0.5cm]
+        \color{bluecustom}\large Déploiement de Zabbix conteneurisé pour le monitoring\\d'un parc hybride (Linux \& Windows)
+    };
+\end{tikzpicture}
 
-    \begin{tikzpicture}
-        \node[draw=orangecustom, rectangle, line width=2pt, inner sep=20pt, text width=0.85\textwidth, align=center] (box) {
-            \begin{minipage}{0.45\textwidth}
-                \textbf{Réalisé par:}\\[0.3cm]
-                - ARFAOUI Amine\\
-                - BOURRI Abderrahmane\\
-                - EL BADRY Mohammed\\
-                - OUARGUI Souhail\\
-            \end{minipage}
-            \hfill
-            \begin{minipage}{0.45\textwidth}
-                \textbf{Encadré par:}\\[0.3cm]
-                - Pr. Asmae OUHMIDA\\
-            \end{minipage}
-        };
-        \draw[orangecustom, thick] (box.south west) -- (box.south east);
-        \draw[orangecustom, thick] (box.north west) -- (box.north east);
-    \end{tikzpicture}
+\vspace{1.2cm}
 
-    \vfill
+% Informations étudiant et encadrant
+\begin{tikzpicture}
+    \node[draw=orangecustom, rectangle, line width=1.5pt, inner sep=15pt, text width=0.85\textwidth, align=center] (box) {
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \textbf{Réalisé par :}\\[0.4cm]
+            EL BADRY Mohammed
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \textbf{Encadré par :}\\[0.4cm]
+            Pr. Azeddine KHIAT
+        \end{minipage}
+    };
+\end{tikzpicture}
 
-    {\large\bfseries Année Universitaire: 2024-2025}
-\end{center}
+\vspace{1cm}
+
+% Technologies utilisées
+\begin{tikzpicture}
+    \node[draw=bluecustom, rectangle, rounded corners, line width=1pt, inner sep=10pt, text width=0.75\textwidth, align=center, fill=backcolour] {
+        \small\textbf{Technologies :} AWS EC2 \textbullet{} Docker \textbullet{} Zabbix 7.0 \textbullet{} MySQL \textbullet{} Ubuntu \textbullet{} Windows Server
+    };
+\end{tikzpicture}
 
 \vfill
-\begin{figure}[b]
-	\centering
-	\includegraphics[width=1\textwidth]{images/footer.png}
-\end{figure}
+
+% Année universitaire
+{\large\bfseries Année Universitaire : 2025/2026}
+
+\vspace{0.5cm}
+
+% Footer
+\includegraphics[width=0.9\textwidth]{images/footer.png}
+
+\end{titlepage}

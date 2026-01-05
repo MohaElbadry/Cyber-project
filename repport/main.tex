@@ -1,107 +1,128 @@
-\documentclass[12pt]{report}
+\documentclass[12pt,a4paper]{report}
 
 %-------------------- Packages ---------------------%
-\usepackage{lmodern}           % Load lmodern font
-\usepackage[french]{babel}     % French language support
-\usepackage[utf8]{inputenc}    % UTF-8 encoding
-\usepackage[T1]{fontenc}       % Output font encoding
-\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
 
+% Helvetica Font Family
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning,fit}
-\usepackage[top=2cm,bottom=2.5cm,right=2cm,left=2cm]{geometry} % Initial Page margins
-\usepackage{quoting}           % For quoting environment
-\usepackage{graphicx}          % For including graphics
-\usepackage{hyperref}          % For hyperlinks
-\usepackage{changepage}        % For adjusti{\tiny }ng page margins
-\usepackage{subcaption}        % For sub-captions
-\usepackage[footnote]{acronym} % For acronyms
-\usepackage{blindtext}         % For dummy text
-\usepackage[dvipsnames]{xcolor}% For color
-\usepackage{amsmath,amsfonts,amssymb} % For math symbols and fonts
-\usepackage{makeidx}           % For indexing
-\usepackage{colortbl}          % For colored tables
-\usepackage{float}             % For floating objects
-\usepackage{wrapfig}           % For wrapped figures
-\usepackage{placeins}          % For keeping floats in sections
-\usepackage{titlesec}          % For customizing section titles
-\usepackage{fancyhdr}          % For headers and footers
-\usepackage{afterpage}         % For changing the geometry on specific pages
-\usepackage{underscore}
-\usepackage[backend=bibtex]{biblatex} % For bibliography
-\usepackage[page,toc,titletoc,title]{appendix} % For appendices
+\usepackage[top=2.5cm,bottom=2.5cm,right=2cm,left=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{pdfpages}
-\usepackage{hyperref}          % For hyperlinks
+\usepackage{tocloft}
 
 %-------------------- Color Definitions ---------------------%
 \definecolor{orangecustom}{RGB}{230,115,0}
+\definecolor{bluecustom}{RGB}{0,51,102}
+\definecolor{awsorange}{RGB}{255,153,0}
+\definecolor{codegreen}{RGB}{0,128,0}
+\definecolor{codegray}{RGB}{128,128,128}
+\definecolor{codeblue}{RGB}{0,0,255}
+\definecolor{backcolour}{RGB}{245,245,245}
+
+%-------------------- Listings Configuration ---------------------%
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codeblue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{orangecustom},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{codegray}
+}
+\lstset{style=mystyle}
+
+%-------------------- Hyperref Configuration ---------------------%
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bluecustom,
+    filecolor=magenta,
+    urlcolor=awsorange,
+    citecolor=bluecustom,
+    pdftitle={Infrastructure Cloud de Supervision Centralisée sous AWS},
+    pdfauthor={EL BADRY Mohammed},
+}
 
 %-------------------- Customizations ---------------------%
-% Footnote size
-\renewcommand{\footnotesize}{\fontsize{7pt}{9pt}\selectfont}
-
-% Table of contents and section numbering depth
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
 
-% Table and figure captions
 \renewcommand{\tablename}{Tableau}
 \renewcommand{\figurename}{Figure}
+\renewcommand{\lstlistingname}{Code}
 
-% Chapter title format and spacing
+% Chapter title format
 \titleformat{\chapter}[display]
-{\normalfont\huge\bfseries}{\chaptername\ \thechapter}{20pt}{\Huge}
+{\normalfont\huge\bfseries\sffamily}{\chaptername\ \thechapter}{20pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{-20pt}{40pt}
-
-% French language customizations for appendices
-\addto\captionsfrench{%
-	\renewcommand\appendixname{Annexe}
-	\renewcommand\appendixpagename{Annexes}
-	\renewcommand{\appendixtocname}{Annexes}
-}
 
 %-------------------- Page Style ---------------------%
 \pagestyle{fancy}
-\fancyhf{} % Clear all header and footer fields
-\fancyhead[L]{\leftmark} % Chapter title in the left header
-\fancyfoot[C]{\thepage} % Page number in the right header
-\renewcommand{\headrulewidth}{0.4pt} % Line thickness for the header
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
 
 %-------------------- Document Start ---------------------%
 \begin{document}
-	
-	% Title page
-	\pagestyle{empty} % Remove page number from title page
 
-% ---------Page De Garde---------
-	% \includepdf[pages=-]{pages/page_de_garde.pdf}
-	
-	% Adjust margins for the rest of the document
-	\newgeometry{top=2.5cm, bottom=2.5cm, right=2cm, left=2.5cm}
-	\newpage
-	
-	% Preliminary pages with Roman numerals
+% ========== PAGE DE GARDE ==========
+\pagestyle{empty}
+\input{chaps/00-page-de-garde}
+\newpage
 
-	\pagenumbering{gobble}	% Remove the entire counter 
-	
-	% Acknowledgments
-	\include{presentation_defense.pdf}
-	\thispagestyle{plain}
-	
-	% Table of Contents
-	\tableofcontents
-	\clearpage
-	
-	% List of Figures
-	\listoffigures
-	\clearpage
-	
-	% Main Content with Arabic numerals
-	\pagenumbering{arabic}
-	\setcounter{page}{1}
-	\pagestyle{fancy}
-	% Include main content chapters
+% ========== TABLE DES MATIÈRES ==========
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
 
+% ========== LISTE DES FIGURES ==========
+\listoffigures
+\clearpage
 
-	
-	%-------------------- End of Document ---------------------%
+% ========== LISTE DES TABLEAUX ==========
+\listoftables
+\clearpage
+
+% ========== CONTENU PRINCIPAL ==========
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+\input{chaps/01-introduction}
+\input{chaps/02-architecture}
+\input{chaps/03-instances-ec2}
+\input{chaps/04-docker-zabbix}
+\input{chaps/05-agents-configuration}
+\input{chaps/06-monitoring}
+\input{chaps/07-conclusion}
+
 \end{document}

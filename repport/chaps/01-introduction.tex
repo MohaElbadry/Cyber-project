@@ -1,105 +1,110 @@
+% ============================================
 % Chapitre 1 : Introduction
+% ============================================
 \chapter{Introduction}
 \label{chap:introduction}
 
-\section{Contexte Général}
+\section{Contexte du Projet}
 
-L'analyse forensique des scènes de crime représente un domaine critique où la précision et la rapidité d'intervention peuvent avoir des conséquences significatives sur le cours d'une enquête. Traditionnellement, cette analyse repose sur l'expertise humaine, ce qui peut être sujet à des erreurs, des biais ou des limitations temporelles.
+Dans le cadre de la formation AWS Academy, ce projet vise à mettre en œuvre une \textbf{infrastructure cloud de supervision centralisée} sur Amazon Web Services (AWS). L'objectif principal est de déployer une solution de monitoring complète capable de surveiller un parc informatique hybride composé de machines Linux et Windows.
 
-L'avènement de l'intelligence artificielle et du Deep Learning offre de nouvelles perspectives pour augmenter les capacités des experts forensiques. Les techniques de vision par ordinateur permettent désormais de détecter automatiquement des objets d'intérêt, d'extraire des informations textuelles et de générer des hypothèses préliminaires.
-
-Notre projet, \textbf{AI Forensic Avatar}, s'inscrit dans cette démarche d'innovation en proposant un système complet d'analyse forensique assistée par l'IA, doté d'une interface utilisateur immersive basée sur un avatar 3D interactif.
-
-\section{Problématique}
-
-L'analyse de scènes de crime présente plusieurs défis majeurs :
-
-\begin{enumerate}
-    \item \textbf{Volume de données} : Les enquêtes modernes génèrent un nombre considérable d'images et de preuves visuelles qui nécessitent un traitement rapide.
-    
-    \item \textbf{Expertise limitée} : Les experts forensiques qualifiés sont rares et leur temps est précieux.
-    
-    \item \textbf{Subjectivité} : L'interprétation humaine peut varier d'un expert à l'autre, introduisant des biais potentiels.
-    
-    \item \textbf{Accessibilité} : Les outils d'analyse professionnels sont souvent coûteux et complexes à utiliser.
-    
-    \item \textbf{Communication} : La présentation des résultats d'analyse peut être technique et difficile à comprendre pour les non-spécialistes.
-\end{enumerate}
+La supervision des infrastructures informatiques est devenue un enjeu majeur pour les entreprises. Elle permet de :
+\begin{itemize}
+    \item Détecter les anomalies et les pannes en temps réel
+    \item Anticiper les problèmes de performance
+    \item Optimiser l'utilisation des ressources
+    \item Garantir la disponibilité des services
+\end{itemize}
 
 \section{Objectifs du Projet}
 
-Notre projet vise à développer une solution logicielle complète répondant aux objectifs suivants :
+Ce projet a pour objectifs :
 
-\subsection{Objectifs Techniques}
-
-\begin{itemize}
-    \item Implémenter un pipeline d'analyse d'images utilisant des modèles de Deep Learning état de l'art
-    \item Développer une API REST robuste et performante avec FastAPI
-    \item Créer une interface utilisateur moderne et intuitive avec React et Three.js
-    \item Intégrer un système de streaming en temps réel pour les réponses de l'IA
-    \item Mettre en place un avatar 3D avec synchronisation labiale pour une expérience immersive
-\end{itemize}
-
-\subsection{Objectifs Fonctionnels}
-
-\begin{itemize}
-    \item Permettre le téléchargement et l'analyse automatique d'images de scènes
-    \item Détecter et classifier les objets présents sur les images
-    \item Extraire le texte visible (plaques d'immatriculation, panneaux, documents)
-    \item Générer des hypothèses forensiques basées sur les preuves détectées
-    \item Offrir une interface conversationnelle avec l'avatar pour discuter des analyses
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{Déployer une infrastructure AWS} : Création d'un VPC, configuration des sous-réseaux et des groupes de sécurité
+    \item \textbf{Installer Zabbix avec Docker} : Mise en place d'un serveur Zabbix conteneurisé pour la centralisation du monitoring
+    \item \textbf{Configurer la supervision hybride} : Installation et configuration des agents Zabbix sur des clients Linux et Windows
+    \item \textbf{Valider le monitoring} : Démonstration de la collecte de métriques et de la génération d'alertes
+\end{enumerate}
 
 \section{Technologies Utilisées}
 
-Le tableau \ref{tab:technologies} présente les principales technologies utilisées dans ce projet :
+\subsection{Amazon Web Services (AWS)}
+
+AWS est la plateforme cloud leader du marché, offrant plus de 200 services. Pour ce projet, nous utilisons :
 
 \begin{table}[H]
 \centering
-
-\label{tab:technologies}
-\begin{tabular}{@{}llp{9cm}@{}}
-\toprule
-\textbf{Catégorie} & \textbf{Technologie} & \textbf{Rôle} \\
-\midrule
-\multirow{4}{*}{Backend} 
-    & FastAPI & Framework web Python asynchrone \\
-    & PostgreSQL & Base de données relationnelle \\
-    & MinIO & Stockage objet compatible S3 \\
-    & SQLAlchemy & ORM pour Python \\
-\midrule
-\multirow{4}{*}{IA/ML}
-    & YOLOv8 & Détection d'objets en temps réel \\
-    & Tesseract & Reconnaissance optique de caractères \\
-    & Ollama/OpenAI & Génération de texte (LLM) \\
-    & Groq PlayAI & Synthèse vocale (TTS) \\
-\midrule
-\multirow{4}{*}{Frontend}
-    & React 19 & Bibliothèque UI JavaScript \\
-    & Three.js & Rendu 3D WebGL \\
-    & React Three Fiber & Intégration Three.js avec React \\
-    & Zustand & Gestion d'état \\
-\midrule
-\multirow{2}{*}{DevOps}
-    & Docker & Conteneurisation \\
-    & Docker Compose & Orchestration multi-conteneurs \\
-\bottomrule
+\caption{Services AWS utilisés}
+\label{tab:aws-services}
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Service} & \textbf{Description} \\
+\hline
+EC2 & Instances virtuelles pour héberger le serveur et les clients \\
+\hline
+VPC & Réseau virtuel privé isolé \\
+\hline
+Security Groups & Pare-feu virtuel pour contrôler le trafic \\
+\hline
 \end{tabular}
-\caption{Stack Technologique du Projet}
 \end{table}
+
+\subsection{Docker}
+
+Docker est une plateforme de conteneurisation qui permet de :
+\begin{itemize}
+    \item Empaqueter les applications avec leurs dépendances
+    \item Garantir la portabilité et la reproductibilité
+    \item Simplifier le déploiement et la mise à jour
+\end{itemize}
+
+\subsection{Zabbix}
+
+Zabbix est une solution de monitoring open source de niveau entreprise, capable de surveiller :
+\begin{itemize}
+    \item Les métriques système (CPU, RAM, disque, réseau)
+    \item Les services et applications
+    \item Les équipements réseau
+    \item Les environnements cloud
+\end{itemize}
+
+\section{Architecture Cible}
+
+L'architecture déployée comprend :
+
+\begin{itemize}
+    \item \textbf{1 VPC} avec un sous-réseau public (10.0.0.0/16)
+    \item \textbf{3 instances EC2} :
+    \begin{itemize}
+        \item Serveur Zabbix (t3.large) - Ubuntu avec Docker
+        \item Client Linux (t3.medium) - Ubuntu avec agent Zabbix
+        \item Client Windows (t3.large) - Windows Server avec agent Zabbix
+    \end{itemize}
+    \item \textbf{Security Groups} configurés pour les ports nécessaires
+\end{itemize}
+
+\section{Dépôt GitHub}
+
+L'ensemble du code source, des fichiers de configuration et de la documentation est disponible sur GitHub :
+
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
+\centering
+\textbf{Dépôt GitHub du projet}\\[0.3cm]
+\url{https://github.com/VOTRE-USERNAME/aws-zabbix-monitoring}
+}}
+\end{center}
 
 \section{Organisation du Rapport}
 
-Ce rapport est organisé comme suit :
+Ce rapport est structuré comme suit :
 
-\begin{description}
-    \item[Chapitre 2 - État de l'Art] Présente les concepts théoriques et les technologies existantes dans les domaines de la vision par ordinateur, du traitement du langage naturel et des interfaces 3D.
-    
-    \item[Chapitre 3 - Architecture Système] Décrit l'architecture globale du système, les choix de conception et les patterns utilisés.
-    
-    \item[Chapitre 4 - Implémentation Backend] Détaille l'implémentation du serveur FastAPI, les services IA et la gestion des données.
-    
-    \item[Chapitre 5 - Implémentation Frontend] Présente le développement de l'interface utilisateur React et l'intégration de l'avatar 3D.
-    
-    \item[Chapitre 8 - Conclusion] Résume les contributions et propose des perspectives d'amélioration.
-\end{description}
+\begin{enumerate}
+    \item \textbf{Chapitre 2} : Architecture réseau et configuration du VPC
+    \item \textbf{Chapitre 3} : Création et configuration des instances EC2
+    \item \textbf{Chapitre 4} : Déploiement de Zabbix avec Docker
+    \item \textbf{Chapitre 5} : Configuration des agents sur les clients
+    \item \textbf{Chapitre 6} : Monitoring et tableaux de bord
+    \item \textbf{Chapitre 7} : Conclusion et perspectives
+\end{enumerate}
