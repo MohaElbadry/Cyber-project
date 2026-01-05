@@ -1,0 +1,107 @@
+\documentclass[12pt]{report}
+
+%-------------------- Packages ---------------------%
+\usepackage{lmodern}           % Load lmodern font
+\usepackage[french]{babel}     % French language support
+\usepackage[utf8]{inputenc}    % UTF-8 encoding
+\usepackage[T1]{fontenc}       % Output font encoding
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,arrows,positioning,fit}
+\usepackage[top=2cm,bottom=2.5cm,right=2cm,left=2cm]{geometry} % Initial Page margins
+\usepackage{quoting}           % For quoting environment
+\usepackage{graphicx}          % For including graphics
+\usepackage{hyperref}          % For hyperlinks
+\usepackage{changepage}        % For adjusti{\tiny }ng page margins
+\usepackage{subcaption}        % For sub-captions
+\usepackage[footnote]{acronym} % For acronyms
+\usepackage{blindtext}         % For dummy text
+\usepackage[dvipsnames]{xcolor}% For color
+\usepackage{amsmath,amsfonts,amssymb} % For math symbols and fonts
+\usepackage{makeidx}           % For indexing
+\usepackage{colortbl}          % For colored tables
+\usepackage{float}             % For floating objects
+\usepackage{wrapfig}           % For wrapped figures
+\usepackage{placeins}          % For keeping floats in sections
+\usepackage{titlesec}          % For customizing section titles
+\usepackage{fancyhdr}          % For headers and footers
+\usepackage{afterpage}         % For changing the geometry on specific pages
+\usepackage{underscore}
+\usepackage[backend=bibtex]{biblatex} % For bibliography
+\usepackage[page,toc,titletoc,title]{appendix} % For appendices
+\usepackage{pdfpages}
+\usepackage{hyperref}          % For hyperlinks
+
+%-------------------- Color Definitions ---------------------%
+\definecolor{orangecustom}{RGB}{230,115,0}
+
+%-------------------- Customizations ---------------------%
+% Footnote size
+\renewcommand{\footnotesize}{\fontsize{7pt}{9pt}\selectfont}
+
+% Table of contents and section numbering depth
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+% Table and figure captions
+\renewcommand{\tablename}{Tableau}
+\renewcommand{\figurename}{Figure}
+
+% Chapter title format and spacing
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptername\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+% French language customizations for appendices
+\addto\captionsfrench{%
+	\renewcommand\appendixname{Annexe}
+	\renewcommand\appendixpagename{Annexes}
+	\renewcommand{\appendixtocname}{Annexes}
+}
+
+%-------------------- Page Style ---------------------%
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyhead[L]{\leftmark} % Chapter title in the left header
+\fancyfoot[C]{\thepage} % Page number in the right header
+\renewcommand{\headrulewidth}{0.4pt} % Line thickness for the header
+
+%-------------------- Document Start ---------------------%
+\begin{document}
+	
+	% Title page
+	\pagestyle{empty} % Remove page number from title page
+
+% ---------Page De Garde---------
+	% \includepdf[pages=-]{pages/page_de_garde.pdf}
+	
+	% Adjust margins for the rest of the document
+	\newgeometry{top=2.5cm, bottom=2.5cm, right=2cm, left=2.5cm}
+	\newpage
+	
+	% Preliminary pages with Roman numerals
+
+	\pagenumbering{gobble}	% Remove the entire counter 
+	
+	% Acknowledgments
+	\include{presentation_defense.pdf}
+	\thispagestyle{plain}
+	
+	% Table of Contents
+	\tableofcontents
+	\clearpage
+	
+	% List of Figures
+	\listoffigures
+	\clearpage
+	
+	% Main Content with Arabic numerals
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	\pagestyle{fancy}
+	% Include main content chapters
+
+
+	
+	%-------------------- End of Document ---------------------%
+\end{document}
