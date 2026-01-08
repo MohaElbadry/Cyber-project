@@ -1,7 +1,15 @@
+# =============================================================================
+# Docker Compose - Zabbix Monitoring Stack
+# Projet: Infrastructure Cloud de Supervision Centralisée sous AWS
+# Auteur: EL BADRY Mohammed
+# =============================================================================
+
 version: "3.8"
 
 services:
-  # Base de données MySQL
+  # ==========================================================================
+  # Base de données MySQL 8.0
+  # ==========================================================================
   mysql-server:
     image: mysql:8.0
     container_name: zabbix-mysql
@@ -26,7 +34,9 @@ services:
       timeout: 5s
       retries: 5
 
-  # Serveur Zabbix
+  # ==========================================================================
+  # Serveur Zabbix 7.0 LTS
+  # ==========================================================================
   zabbix-server:
     image: zabbix/zabbix-server-mysql:alpine-7.0-latest
     container_name: zabbix-server
@@ -48,7 +58,9 @@ services:
     volumes:
       - zabbix_server_data:/var/lib/zabbix
 
+  # ==========================================================================
   # Interface Web Zabbix (Nginx)
+  # ==========================================================================
   zabbix-web:
     image: zabbix/zabbix-web-nginx-mysql:alpine-7.0-latest
     container_name: zabbix-web
@@ -68,7 +80,9 @@ services:
     networks:
       - zabbix-net
 
-  # Agent Zabbix pour monitorer le serveur lui-même
+  # ==========================================================================
+  # Agent Zabbix (pour monitorer le serveur lui-même)
+  # ==========================================================================
   zabbix-agent:
     image: zabbix/zabbix-agent:alpine-7.0-latest
     container_name: zabbix-agent
@@ -82,10 +96,46 @@ services:
     networks:
       - zabbix-net
 
+# =============================================================================
+# Volumes persistants
+# =============================================================================
 volumes:
   mysql_data:
+    name: zabbix_mysql_data
   zabbix_server_data:
+    name: zabbix_server_data
 
+# =============================================================================
+# Réseau Docker
+# =============================================================================
 networks:
   zabbix-net:
+    name: zabbix-network
     driver: bridge
+# =============================================================================
+# INSTRUCTIONS D'UTILISATION:
+#
+# 1. Créer le répertoire et copier ce fichier:
+#    mkdir -p ~/zabbix && cd ~/zabbix
+#    nano docker-compose.yml
+#
+# 2. Lancer les conteneurs:
+#    docker compose up -d
+#
+# 3. Vérifier le statut:
+#    docker compose ps
+#
+# 4. Voir les logs:
+#    docker compose logs -f
+#
+# 5. Accéder à l'interface web:
+#    http://<IP-PUBLIQUE>
+#    Username: Admin
+#    Password: zabbix
+#
+# 6. Arrêter les conteneurs:
+#    docker compose down
+#
+# 7. Supprimer les données (ATTENTION):
+#    docker compose down -v
+# =============================================================================
