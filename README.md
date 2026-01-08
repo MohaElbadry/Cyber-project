@@ -136,12 +136,6 @@ sudo systemctl enable zabbix-agent
 | Arrêt auto  | Relancer `docker compose up -d`      |
 | Budget ~50$ | Stop instances quand inutilisées     |
 
-## 👤 Auteur
-
-- **Nom** : [Votre Nom]
-- **Encadrant** : Prof. Azeddine KHIAT
-- **Année universitaire** : 2025/2026
-- **Filière** : [Votre Filière]
 
 ## 📄 Licence
 
